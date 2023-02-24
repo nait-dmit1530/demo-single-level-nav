@@ -1,1 +1,97 @@
 /* dev styles go here */
+
+body {
+    font-family: sans-serif;
+
+}
+
+header {
+    background-color: #191919;
+    padding: 0.5rem;
+}
+
+nav {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* font styles go on the anchor tag directly */
+ul.menu a {
+    color: #f5f5f5;
+    text-decoration: none;
+    text-transform: uppercase;
+    /* makes the li elements block level elements to turn the entire li element
+        into a clickable link block (instead of just the anchor tag) */
+    display: block;
+    /* Can be used to move text left/right */
+    padding: 0 0.5rem;
+    /* makes the SVG and text flex items */
+    display: flex;
+    /* puts gap between SVG icon and link text*/
+    gap: 0.5rem;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+/* Spacing and layout go on the li elements */
+ul.menu li {
+    /* line height of 1.5 is NOT enough for navigation menus 
+        assign a line-height to space text
+        DON'T USE TOP/BOTTOM PADDING!!!  */
+    line-height: 55px;
+    /* add a margin-bottom to add space between links that is not clickable */
+    margin-bottom: 0.75rem;
+}
+
+/* SVG TARGETS */
+ul.menu svg {
+    /* sets the size of the SVG */
+    width: 1.25rem;
+    /* color property does NOT work on SVGs. USE FILL */
+    fill: #f5f5f5;
+}
+
+/* IMPORTANT: The Events SVG icon (on HTML) has special styling built-in
+    (see: events-calendar-svgrepo-com.svg file and note the:
+    <path and <rect elements
+    These are not removed by SVG Minify as it is deemed desired content
+    Thus, they have to be targetted specifically by CSS to change
+    */
+ul.menu path,
+ul.menu rect {
+    fill: #f5f5f5;
+}
+
+
+/* hover states only needed on desktop versions since phones/tablets
+    cannot display this.  For phones/tablets use active state */
+ul.menu a:hover,
+ul.menu a:active {
+    color: #39ff14;
+}
+
+@media screen and (min-width: 450px) {
+    ul.menu {
+        /* makes menu go from default column to row */
+        display: flex;
+        /* Makes flex-items wrap when screen width not large enough to
+            display entire row */
+        flex-flow: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+
+    }
+
+    ul.menu li {
+        border: 1px solid #fff;
+        text-align: center;
+        /* flex-grow: 1; */
+        /* flex: is shorthand for all values of:
+             flex-grow, flex-shrink, and flex-basis*/
+        flex: 1 0 auto;
+    }
+
+    ul.menu a {
+        justify-content: center;
+    }
+}
